@@ -5,7 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
 import { plus } from '../../utils/Icons';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Form() {
     const {addIncome, getIncomes, error, setError} = useGlobalContext()
@@ -34,6 +35,17 @@ function Form() {
             category: '',
             description: '',
         })
+
+        toast.success('Income Added Successfully', {
+            position: "top-right",
+            autoClose: 1200,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
     }
 
     return (
@@ -93,6 +105,7 @@ function Form() {
                     color={'#fff'}
                 />
             </div>
+            <ToastContainer />
         </FormStyled>
     )
 }

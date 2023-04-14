@@ -5,10 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
 import { plus } from '../../utils/Icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function ExpenseForm() {
-    const {addExpense, error, setError} = useGlobalContext()
+    const { addExpense, error, setError } = useGlobalContext()
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -17,15 +19,15 @@ function ExpenseForm() {
         description: '',
     })
 
-    const { title, amount, date, category,description } = inputState;
+    const { title, amount, date, category, description } = inputState;
 
     const handleInput = name => e => {
-        setInputState({...inputState, [name]: e.target.value})
+        setInputState({ ...inputState, [name]: e.target.value })
         setError('')
     }
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
         addExpense(inputState)
         setInputState({
             title: '',
@@ -34,6 +36,16 @@ function ExpenseForm() {
             category: '',
             description: '',
         })
+        toast.success('Expense Added Successfully', {
+            position: "top-right",
+            autoClose: 1200,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
     }
 
     return (
@@ -93,7 +105,9 @@ function ExpenseForm() {
                     color={'#fff'}
                 />
             </div>
+            <ToastContainer />
         </ExpenseFormStyled>
+        
     )
 }
 
