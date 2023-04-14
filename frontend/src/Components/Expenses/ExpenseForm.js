@@ -38,7 +38,7 @@ function ExpenseForm() {
         })
         toast.success('Expense Added Successfully', {
             position: "top-right",
-            autoClose: 1200,
+            autoClose: 1500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
