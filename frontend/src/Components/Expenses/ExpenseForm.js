@@ -36,6 +36,19 @@ function ExpenseForm() {
             category: '',
             description: '',
         })
+        if(amount<0){
+            toast.error('Amount cannot be less than 0', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        }
+        else{
         toast.success('Expense Added Successfully', {
             position: "top-right",
             autoClose: 1500,
@@ -46,6 +59,7 @@ function ExpenseForm() {
             progress: undefined,
             theme: "light",
             });
+        }
     }
 
     return (
